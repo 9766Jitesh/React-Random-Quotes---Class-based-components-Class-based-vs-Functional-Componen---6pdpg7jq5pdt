@@ -18,9 +18,10 @@ var colors = [
 
   
 const App = () => {
-  const [post,setPost]=useState('content');
-  const[author,setAuthor]=useState('author');
-  const[color,setColor]=useState(colors[0])
+  const Random=Math.floor((Math.random() * 100) % colors.length);
+  const [post,setPost]=useState("");
+  const[author,setAuthor]=useState("");
+  const[color,setColor]=useState(colors[Random])
   
   useEffect(()=>{
      getData();
@@ -32,8 +33,8 @@ const App = () => {
     console.log(result.content);
     setPost(result.content);
     setAuthor(result.author);
-    setColor(colors[Number.parseInt(Math.random()*10)]);
-    console.log(colors[Number.parseInt(Math.random()*10)])
+    setColor(colors[Random]);
+    console.log(colors[Random])
     }
     
 
