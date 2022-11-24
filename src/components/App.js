@@ -23,7 +23,7 @@ const App = () => {
   const[color,setColor]=useState(colors[0])
   
   useEffect(()=>{
-     setColor(colors[Number.parseInt(Math.random()*10)]);
+     getData();
   },[])
  
     async function getData() {
@@ -32,6 +32,7 @@ const App = () => {
     console.log(result.content);
     setPost(result.content);
     setAuthor(result.author);
+    setColor(colors[Number.parseInt(Math.random()*10)]);
     console.log(colors[Number.parseInt(Math.random()*10)])
     }
     
