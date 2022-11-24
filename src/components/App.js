@@ -40,8 +40,8 @@ const App = () => {
 
   
     return (
-      <div id="main">
-        <div id="wrapper"   style={{backgroundColor:`${color}`}}>
+      <div id="main" style={{backgroundColor:`${color}`}}>
+        <div id="wrapper">
           
           <div className="quote-text">{post}</div>
           <div className="quote-author">{author}</div>
