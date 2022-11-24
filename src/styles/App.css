@@ -51,7 +51,7 @@ body {
 }
 
 .quote-author {
-    width: 450px;
+    width: auto;
     height: auto;
     clear: both;
     padding-top: 20px;

@@ -18,13 +18,13 @@ var colors = [
 
   
 const App = () => {
-  const [post,setPost]=useState('');
-  const[author,setAuthor]=useState('');
+  const [post,setPost]=useState('content');
+  const[author,setAuthor]=useState('author');
   const[color,setColor]=useState(colors[0])
   
   useEffect(()=>{
      setColor(colors[Number.parseInt(Math.random()*10)]);
-  })
+  },[])
  
     async function getData() {
     const response = await fetch('https://api.quotable.io/random');
