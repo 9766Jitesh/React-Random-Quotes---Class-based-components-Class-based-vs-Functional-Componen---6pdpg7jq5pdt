@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/App.css";
 
 var colors = [
@@ -16,36 +16,30 @@ var colors = [
   '#73A857'
 ];
 
-  
 const App = () => {
-  const Random=Math.floor((Math.random() * 100) % colors.length);
-  const [post,setPost]=useState("");
-  const[author,setAuthor]=useState("");
-  const[color,setColor]=useState(colors[Random])
-  
+  const random = Math.floor((Math.random() * 100) % colors.length)
+  const [quote,setQuote] = useState("");
+  const [author,setAuthor] = useState("");
+  const [background,setBackground] = useState(colors[random]);
+  async function getAuthorQuote(){
+    const infoJson = await fetch("https://api.quotable.io/random");
+    const data = await infoJson.json();
+    setAuthor(data.author);
+    setQuote(data.content)
+    setBackground(colors[random])
+    console.log(data)
+    console.log(background)
+  }
   useEffect(()=>{
-     getData();
+    getAuthorQuote();
   },[])
- 
-    async function getData() {
-    const response = await fetch('https://api.quotable.io/random');
-    const result = await response.json();
-    console.log(result.content);
-    setPost(result.content);
-    setAuthor(result.author);
-    setColor(colors[Random]);
-    console.log(colors[Random])
-    }
-    
 
-  
     return (
-      <div id="main" style={{backgroundColor:`${color}`}}>
-        <div id="wrapper">
-          
-          <div className="quote-text">{post}</div>
+      <div id="main" style={{backgroundColor:`${background}`}}>
+        <div id="wrapper" >
+          <div className="quote-text">{quote}</div>
           <div className="quote-author">{author}</div>
-          <button   onClick={getData} id="new-quote">Next Quotes</button>
+          <button className="button" id="new-quote" onClick={getAuthorQuote}>Fetch</button>
         </div>
       </div>
     );
